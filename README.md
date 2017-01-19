@@ -9,12 +9,12 @@ To build the docker image manually, check out this repository and run
 `docker build -t <image-name> .`
 
 ## Run
-There are two required environment variables for Rundeck to run. So to use any
+There are two required environment variables for this Rundeck to run. So to use any
 run command below, please add `-e` flag to set `SSH_IP` and `SSH_USER` variables.
 
 `docker run -e SSH_IP="<remote_ip>" -e SSH_USER="<remote_user>"`
 
-More details can found at section [Run remote jobs from Rundeck](#run-remote-jobs-from-rundeck).  
+More details can be found at section [Run remote jobs from Rundeck](#run-remote-jobs-from-rundeck).  
  
 This Rundeck docker exposes two ports 4440 and 4443 for HTTP and HTTPS respectively.
 If you build the docker with image name 'platform-rundeck', then you can map
@@ -75,22 +75,23 @@ service ssh start
 ` 
 
 Linux user can run the rundeck docker using:
-`docker run -d -v ~/.ssh/:/mnt/ssh \
-  -e SSH_USER=<USERNAME_ON_YOUR_MACHINE> \
-  -e SSH_IP=<YOUR_MACHINE_IP_> \
-  -p 4440:4440 \
-  platform-rundeck
-`
+```
+  docker run -d -v ~/.ssh/:/mnt/ssh \
+   -e SSH_USER=<USERNAME_ON_YOUR_MACHINE> \
+   -e SSH_IP=<YOUR_MACHINE_IP_> \
+   -p 4440:4440 \
+   platform-rundeck
+```
 
 Mac/Windows user can run the rundeck docker using:
-`
+```
   docker run -d \
-  -v ~/.docker/machine/machines/default/:/mnt/docker/ssh \
-  -e SSH_USER=docker \
-  -e SSH_IP=192.168.99.100 \
-  -p 4440:4440 \
-  platform-rundeck
-`
+   -v ~/.docker/machine/machines/default/:/mnt/docker/ssh \
+   -e SSH_USER=docker \
+   -e SSH_IP=192.168.99.100 \
+   -p 4440:4440 \
+   platform-rundeck
+```
 You can set up other remote nodes by the following steps after starting the rundeck docker.
 
 If the remote machine is configured as a resource (via resource
