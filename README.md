@@ -83,13 +83,14 @@ Linux user can run the rundeck docker using:
 `
 
 Mac/Windows user can run the rundeck docker using:
-`docker run -d \
+```
+  docker run -d \
   -v ~/.docker/machine/machines/default/:/mnt/docker/ssh \
   -e SSH_USER=docker \
   -e SSH_IP=192.168.99.100 \
   -p 4440:4440 \
   platform-rundeck
-`
+```
 You can set up other remote nodes by the following steps after starting the rundeck docker.
 
 If the remote machine is configured as a resource (via resource
